@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   get "/todoAll", to:"todos#todoAll"
   post "/todoAdd", to:"todos#add"
   post "/todoUpdate", to:"todos#update"
-  delete "/todoDelete", to:"todos#delete"
+  delete "/todoDelete/:id", to:"todos#delete"
+  get "/todo/status/:id",to:"todos#statusUpdate"
+
+  resources :test
+  
 end

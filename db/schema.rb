@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_20_043738) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_21_043828) do
   create_table "movies", force: :cascade do |t|
     t.string "name"
     t.integer "year"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_20_043738) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false
   end
 
 end

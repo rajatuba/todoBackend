@@ -23,21 +23,37 @@ class TodosController < ActionController::Base
         render :json=>todoList
     end
     def add
+        puts "params"
+        puts params
         todoItem={
             "title"=>params[:title]
         }
+        puts todoItem
         todo=Todo.new(todoItem)
         todo.save
         render :json=>todo
     end
     def update
         todo=Todo.find(params[:id])
+        puts "update"
+        puts params[:id]
         todo.update(title:params[:title])
         render :json => "Successfully updated"
     end
     def delete
-        todoItem=Todo.find(params[:id])
+        puts "delete"
+        puts params[:id]
+        todoItem=Todo.find(params[:id].to_i)
         todoItem.destroy
         render :json => "Deleted Successfully"
+    end
+    def statusUpdate
+        puts "inside status update"
+        todoItem=Todo.find(params[:id].to_i)
+        prev=todoItem[:status]
+        puts "prev value"
+        puts prev
+        todoItem.update(status:!prev)
+        render :json => todoItem
     end
 end
